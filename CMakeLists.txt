@@ -4,7 +4,8 @@ find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(bluetooth-rgb)
 
 target_sources(app PRIVATE
-  src/main.cpp
+  src/main.c
+  src/bluetooth/bluetooth.c
 )
 include_directories(
   src
