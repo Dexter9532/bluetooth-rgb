@@ -6,6 +6,8 @@ project(bluetooth-rgb)
 target_sources(app PRIVATE
   src/main.c
   src/bluetooth/bluetooth.c
+  src/bluetooth/gatt_service.c
+  src/rgb/rgb.c
 )
 include_directories(
   src
