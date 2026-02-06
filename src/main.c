@@ -1,5 +1,6 @@
 #include "bluetooth/bluetooth.h"
 #include "bluetooth/gatt_service.h"
+#include "display/display.h"
 #include "rgb/rgb.h"
 
 #include <stdint.h>
@@ -22,6 +23,9 @@ int main(void) {
   if (!init_rgb()) {
     printk("LED strip not ready\n");
   }
+
+  display_init();
+  display_set_value(0);
 
   uint8_t hex[3];
   uint8_t saved_hex[3] = {0, 0, 0};
