@@ -53,18 +53,8 @@ static void display_init_top_box(void) {
   lv_obj_align(top_box, LV_ALIGN_BOTTOM_MID, 0, 0);
 
   top_label = lv_label_create(top_box);
-  lv_label_set_text(top_label, "MODE");
+  lv_label_set_text(top_label, "MODE 0");
   lv_obj_center(top_label);
-}
-
-static void display_init_center_box(void) {
-  box = lv_obj_create(lv_scr_act());
-  lv_obj_remove_style_all(box);
-  lv_obj_set_size(box, LV_PCT(100), 30);
-  lv_obj_center(box);
-
-  label = lv_label_create(box);
-  lv_obj_center(label);
 }
 
 static void display_apply_rotation(void) {
@@ -73,11 +63,6 @@ static void display_apply_rotation(void) {
   lv_obj_set_style_transform_pivot_x(top_box, lv_obj_get_width(top_box) / 2, 0);
   lv_obj_set_style_transform_pivot_y(top_box, lv_obj_get_height(top_box) / 2,
                                      0);
-
-  lv_obj_update_layout(box);
-  lv_obj_set_style_transform_angle(box, 1800, 0);
-  lv_obj_set_style_transform_pivot_x(box, lv_obj_get_width(box) / 2, 0);
-  lv_obj_set_style_transform_pivot_y(box, lv_obj_get_height(box) / 2, 0);
 }
 
 /**
@@ -86,10 +71,10 @@ static void display_apply_rotation(void) {
  *@note Display needs to be rotated 1800 degrece to fit needs.
  */
 static void lvgl_update(void) {
-  char buf[16];
-  snprintf(buf, sizeof(buf), "%d", current_value);
+  char buf[32];
+  snprintf(buf, sizeof(buf), "MODE %d", current_value);
 
-  lv_label_set_text(label, buf);
+  lv_label_set_text(top_label, buf);
 }
 
 /**
@@ -104,7 +89,6 @@ void display_init(void) {
   lv_lock();
 
   display_init_top_box();
-  display_init_center_box();
   display_apply_rotation();
 
   lv_unlock();

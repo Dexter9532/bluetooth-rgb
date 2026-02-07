@@ -25,7 +25,7 @@ int main(void) {
   }
 
   display_init();
-  display_set_value(0);
+  display_set_value(1);
 
   uint8_t hex[3];
   uint8_t saved_hex[3] = {0, 0, 0};
