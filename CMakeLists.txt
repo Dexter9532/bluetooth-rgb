@@ -8,6 +8,7 @@ target_sources(app PRIVATE
   src/bluetooth/bluetooth.c
   src/bluetooth/gatt_service.c
   src/rgb/rgb.c
+  src/display/display.c
 )
 include_directories(
   src
